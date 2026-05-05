@@ -63,7 +63,8 @@ int main()
 				ClearBackground(BLACK);
 				// sort::SortStepSelection(rectangles, trackers, sorted);
 				// sort::SortStepBubble(rectangles, trackers, sorted);
-				sort::SortStepInsertion(rectangles, trackers, sorted);
+				// sort::SortStepInsertion(rectangles, trackers, sorted);
+				sort::SortStepCocktail(rectangles, trackers, sorted);
 				utils::DrawRectangles(rectangles, ScreenWidth, ScreenHeight, trackers, sorted);
 
 				EndDrawing();

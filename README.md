@@ -7,6 +7,8 @@ A simple sorting visualizer built with raylib. It supports multiple sorting algo
 * ### Insertion Sort Visualization
 ![Insertion Sort](assets/insertion.gif)
 
+* ### Cocktail Shaker Sort Visualization
+![Cocktail Shaker Sort](assets/cocktail.gif)
 
 ## Installation
 

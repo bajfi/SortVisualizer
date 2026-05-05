@@ -136,4 +136,83 @@ struct sort
 						loopOver = false;
 				}
 		}
+
+		/**
+		 * @brief Performs one step of the cocktail shaker sort algorithm on the given container of
+		 * rectangles. This function is a variation of bubble sort that sorts in both directions on each
+		 * pass through the list. It compares adjacent elements and swaps them if they are in the wrong
+		 * order, and it also updates the tracker to highlight the indices of the compared or swapped
+		 * elements.
+		 * @param rectangles The container of rectangles to be sorted.
+		 * @param tracker The tracker used to highlight the indices of the compared or swapped elements.
+		 * @param sorted A boolean reference that will be set to true if the sorting is complete,
+		 * otherwise it will remain false.
+		 */
+		template <std::ranges::range Container, typename Tracker>
+		static void SortStepCocktail(Container& rectangles, Tracker& tracker, bool& sorted)
+		{
+				const size_t N = rectangles.size();
+				static size_t LEFT_IDX = 0;
+				static size_t RIGHT_IDX = N - 1;
+				static size_t CURR_IDX = 0;
+				static bool swapped = false;
+				static bool forward = true;
+
+				if (RIGHT_IDX <= LEFT_IDX)
+				{
+						sorted = true;
+						return;
+				}
+
+				if (forward)
+				{
+						if (rectangles[CURR_IDX] > rectangles[CURR_IDX + 1])
+						{
+								tracker.clear();
+								std::swap(rectangles[CURR_IDX], rectangles[CURR_IDX + 1]);
+								tracker.insert(CURR_IDX);
+								tracker.insert(CURR_IDX + 1);
+								swapped = true;
+						}
+
+						++CURR_IDX;
+						if (CURR_IDX >= RIGHT_IDX)
+						{
+								--RIGHT_IDX;
+								CURR_IDX = RIGHT_IDX;
+								forward = false;
+
+								if (!swapped)
+								{
+										sorted = true;
+								}
+								swapped = false;
+						}
+				}
+				else
+				{
+						if (rectangles[CURR_IDX] < rectangles[CURR_IDX - 1])
+						{
+								tracker.clear();
+								std::swap(rectangles[CURR_IDX], rectangles[CURR_IDX - 1]);
+								tracker.insert(CURR_IDX);
+								tracker.insert(CURR_IDX - 1);
+								swapped = true;
+						}
+
+						--CURR_IDX;
+						if (CURR_IDX <= LEFT_IDX)
+						{
+								++LEFT_IDX;
+								CURR_IDX = LEFT_IDX;
+								forward = true;
+
+								if (!swapped)
+								{
+										sorted = true;
+								}
+								swapped = false;
+						}
+				}
+		}
 };
