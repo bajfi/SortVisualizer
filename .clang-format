@@ -1,0 +1,273 @@
+---
+# Language and Standard
+Language: Cpp # Specifies that this is for C++ code
+Standard: Latest # Use the latest C++ standard features
+
+# Base Style and Indentation
+BasedOnStyle: Microsoft # Use Microsoft's style as a base
+ColumnLimit: 100 # Maximum line length
+TabWidth: 2 # Use 2 spaces for tab width
+
+# Alignment and Formatting
+AccessModifierOffset: -2 # Indent access modifiers (public, private) relative to class declaration
+AlignAfterOpenBracket: Align # Align after open bracket
+AlignArrayOfStructures: Right # Align array of structures to the right
+AlignConsecutiveAssignments:
+  Enabled: false
+  AcrossEmptyLines: true
+  AcrossComments: false
+  AlignCompound: true
+  AlignFunctionDeclarations: false
+  AlignFunctionPointers: false
+  PadOperators: true
+AlignConsecutiveDeclarations:
+  Enabled: false
+  AcrossEmptyLines: true
+  AcrossComments: false
+  AlignFunctionDeclarations: false
+  AlignFunctionPointers: false
+  PadOperators: true
+AlignConsecutiveMacros:
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: false
+  AlignFunctionDeclarations: false
+  AlignFunctionPointers: false
+  PadOperators: true
+AlignConsecutiveShortCaseStatements:
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: true
+  AlignCaseColons: true
+  AlignCaseArrows: true
+AlignEscapedNewlines: Right # Align escaped newlines to the right
+AlignOperands: Align # Align operands
+AlignTrailingComments:
+  Kind: Always
+  OverEmptyLines: 2
+  AlignPPAndNotPP: true
+
+# Function and Control Statements
+AllowAllParametersOfDeclarationOnNextLine: true # Allow all parameters of a declaration on the next line
+AllowBreakBeforeNoexceptSpecifier: Always # Allow break before noexcept specifier
+AllowShortBlocksOnASingleLine: Always # Each block gets multiple lines
+AllowShortCaseExpressionOnASingleLine: true # Allow short case expressions on a single line
+AllowShortCaseLabelsOnASingleLine: false # Case labels on separate lines
+AllowShortCompoundRequirementOnASingleLine: true # Allow short compound requirements on a single line
+AllowShortEnumsOnASingleLine: false # Each enum gets multiple lines
+AllowShortFunctionsOnASingleLine: Empty #Only merge empty functions. See Empty of ShortFunctionStyle.
+AllowShortIfStatementsOnASingleLine: false # If statements on multiple lines
+AllowShortLambdasOnASingleLine: Empty # Allow short lambdas on a single line
+AllowShortLoopsOnASingleLine: false # Loops on multiple lines
+
+BinPackLongBracedList: true # Bin-pack long braced lists
+BitFieldColonSpacing: Both # Space around bit-field colon
+
+BreakBeforeBraces: Custom # Break before braces
+BraceWrapping:
+  AfterCaseLabel: false # After case label
+  AfterClass: true # After class
+  AfterEnum: true # After enum
+  AfterFunction: true # After function
+  AfterNamespace: true # After namespace
+  AfterStruct: true # After struct
+  AfterUnion: true # After union
+  AfterExternBlock: true # After extern block
+  BeforeCatch: true # Before catch
+  BeforeElse: true # Before else
+  BeforeLambdaBody: true # Before lambda body
+  BeforeWhile: false # Before while
+  IndentBraces: false
+  SplitEmptyFunction: false # Split empty function
+  SplitEmptyRecord: false # Split empty record
+  SplitEmptyNamespace: false # Split empty namespace
+
+BracedInitializerIndentWidth: 2 # Indent width for braced initializers
+BreakAdjacentStringLiterals: true # Break adjacent string literals
+BreakAfterAttributes: Never # Don't break after attributes
+BreakAfterOpenBracketBracedList: true # Break after open bracket in braced list
+BreakAfterOpenBracketFunction: true # Break after open bracket in function declaration
+BreakAfterOpenBracketIf: true # Break after open bracket in if statement
+BreakAfterOpenBracketLoop: true # Break after open bracket in loop statement
+BreakAfterOpenBracketSwitch: true # Break after open bracket in switch statement
+BreakAfterReturnType: Automatic # Break after return type
+BreakArrays: false # Don't break arrays
+
+BreakBeforeBinaryOperators: None # Don't break before binary operators
+BreakBeforeCloseBracketBracedList: true # Break before close bracket in braced list
+BreakBeforeCloseBracketFunction: true # Break before close bracket in function declaration
+BreakBeforeCloseBracketIf: true # Break before close bracket in if statement
+BreakBeforeCloseBracketLoop: true # Break before close bracket in loop statement
+BreakBeforeCloseBracketSwitch: true # Break before close bracket in switch statement
+BreakBeforeConceptDeclarations: Always # Break before concept declarations
+BreakBeforeTemplateCloser: true # Break before template closer
+BreakBeforeTernaryOperators: true # Break before ternary operators
+BreakConstructorInitializers: BeforeColon # Break constructor initializers before colons
+BreakFunctionDefinitionParameters: false # Don't break function definition parameters
+BreakInheritanceList: AfterColon # Break inheritance list after colons
+BreakStringLiterals: true # Break string literals
+BreakTemplateDeclarations: Yes # Break template declarations
+
+CommentPragmas: "^ IWYU pragma:"
+CompactNamespaces: false # Don't compact namespaces
+ConstructorInitializerIndentWidth: 2 # Indent width for constructor initializer list
+ContinuationIndentWidth: 2 # Indent width for line continuations
+
+DerivePointerAlignment: false # Don't derive pointer alignment from base style
+DisableFormat: false # Don't disable formatting
+
+EmptyLineAfterAccessModifier: Never
+EmptyLineBeforeAccessModifier: Always
+EnumTrailingComma: Remove # Remove trailing comma in enums
+
+FixNamespaceComments: true # Add namespace name in closing comment
+ForEachMacros:
+  - foreach
+  - Q_FOREACH
+  - BOOST_FOREACH
+
+IfMacros: [IF, IFDEF, IFNDEF] # Preprocessor directives to treat as if statements
+IncludeBlocks: Regroup # Regroup include blocks
+IncludeCategories:
+  - Regex: '.*\.generated\.h'
+    Priority: 100
+  - Regex: ".*(PCH).*"
+    Priority: -1
+  - Regex: '".*"'
+    Priority: 1
+  - Regex: '^<.*\.(h)>'
+    Priority: 3
+  - Regex: "^<.*>"
+    Priority: 4
+IncludeIsMainRegex: "([-_](test|unittest))?$" # Regex to identify main header file
+IndentAccessModifiers: false # Indent access modifiers (public, private) in classes
+IndentCaseBlocks: true # Indent case blocks in switch statements
+IndentCaseLabels: true # Indent case labels in switch statements
+IndentExportBlock: true # Indent export blocks
+IndentExternBlock: Indent # Indent extern blocks
+IndentPPDirectives: BeforeHash # Indent preprocessor directives before hash
+IndentRequiresClause: true # Indent requires clause in concepts
+IndentWidth: 4 # Use 4 spaces for indentation
+IndentWrappedFunctionNames: false # Don't indent wrapped function names
+InsertBraces: true # Insert braces for control statements
+InsertNewlineAtEOF: true # Ensure newline at end of file
+InsertTrailingCommas: None # Insert trailing commas in wrapped lists
+IntegerLiteralSeparator:
+  Binary: 0
+  Decimal: 3
+  Hex: -1
+
+KeepEmptyLines:
+  AtEndOfFile: true
+  AtStartOfBlock: false
+  AtStartOfFile: false
+KeepEmptyLinesAtTheStartOfBlocks: false # Remove empty lines at start of block
+KeepFormFeed: true # Keep form feed characters
+
+LambdaBodyIndentation: Signature # Indent lambda body to the level of the lambda signature
+
+MacroBlockBegin: "^[A-Z_]+_BEGIN$"
+MacroBlockEnd: "^[A-Z_]+_END$"
+MainIncludeChar: Quote # Use quotes for main include
+MaxEmptyLinesToKeep: 1 # Maximum number of consecutive empty lines to keep
+
+NamespaceIndentation: None # Don't indent namespaces
+NumericLiteralCase:
+  ExponentLetter: Lower
+  HexDigit: Upper
+  Prefix: Lower
+  Suffix: Lower
+
+PPIndentWidth: 2 # Indent width for preprocessor directives
+PackConstructorInitializers: CurrentLine # Pack constructor initializers on the current line
+PointerAlignment: Left # Place asterisk next to type (int* ptr)
+
+QualifierAlignment: Custom # Place qualifiers next to type (const int* ptr)
+QualifierOrder: [inline, static, constexpr, const, volatile, type] # Order of qualifiers
+
+RawStringFormats:
+  - Language: Cpp
+    Delimiters:
+      - cc
+      - CC
+      - cpp
+      - Cpp
+      - CPP
+      - "c++"
+      - "C++"
+    CanonicalDelimiter: ""
+    BasedOnStyle: google
+  - Language: TextProto
+    Delimiters:
+      - pb
+      - PB
+      - proto
+      - PROTO
+    EnclosingFunctions:
+      - EqualsProto
+      - EquivToProto
+      - PARSE_PARTIAL_TEXT_PROTO
+      - PARSE_TEST_PROTO
+      - PARSE_TEXT_PROTO
+      - ParseTextOrDie
+      - ParseTextProtoOrDie
+    CanonicalDelimiter: ""
+ReferenceAlignment: Left # Place ampersand next to type (int& ref)
+ReflowComments: Always # Reflow comments with indentation
+RemoveEmptyLinesInUnwrappedLines: true # Remove empty lines in unwrapped lines
+RemoveParentheses: MultipleParentheses # Remove parentheses around conditions when possible
+RemoveSemicolon: true # Remove unnecessary semicolons
+RequiresClausePosition: OwnLine # Place requires clause on its own line
+RequiresExpressionIndentation: OuterScope # Indent requires expression to the outer scope
+
+SeparateDefinitionBlocks: Always # Separate definition blocks with a blank line
+ShortNamespaceLines: 0 # Don't treat any namespace as short
+SkipMacroDefinitionBody: false # Don't skip macro definition bodies
+SortIncludes: true # Sort include statements
+SortUsingDeclarations: Lexicographic # Sort using declarations lexicographically
+SpaceAfterCStyleCast: true # Space after C-style cast
+SpaceAfterLogicalNot: false # No space after logical not operator
+SpaceAfterOperatorKeyword: false # No space after operator keyword
+SpaceAfterTemplateKeyword: true # Space after template keyword
+SpaceAroundPointerQualifiers: Default # Use default spacing around pointer qualifiers
+SpaceBeforeAssignmentOperators: true # Space before assignment operators
+SpaceBeforeCaseColon: true # No space before case colon
+SpaceBeforeCtorInitializerColon: true # No space before constructor initializer colon
+SpaceBeforeInheritanceColon: true # No space before inheritance colon
+
+SpaceBeforeParens: Custom
+SpaceBeforeParensOptions:
+  AfterControlStatements: true
+  AfterForeachMacros: false
+  AfterFunctionDeclarationName: false
+  AfterFunctionDefinitionName: false
+  AfterIfMacros: false
+  AfterNot: true
+  AfterPlacementOperator: true
+  AfterRequiresInClause: false
+  AfterRequiresInExpression: true
+  BeforeNonEmptyParentheses: false
+SpaceBeforeRangeBasedForLoopColon: true # No space before range-based for loop colon
+SpaceBeforeSquareBrackets: false # No space before square brackets
+SpaceInEmptyBraces: Never # No spaces in empty braces
+SpacesBeforeTrailingComments: 4 # Minimum spaces before trailing comments
+SpacesInAngles: Never # No spaces in angle brackets
+SpacesInLineCommentPrefix:
+  Minimum: 1 # Minimum spaces after line comment prefix
+  Maximum: -1 # No maximum limit on spaces after line comment prefix
+SpacesInParens: Custom
+SpacesInParensOptions:
+  ExceptDoubleParentheses: false
+  InConditionalStatements: false
+  InEmptyParentheses: false
+SpacesInSquareBrackets: false # No spaces in square brackets
+StatementAttributeLikeMacros:
+  - emit
+StatementMacros:
+  - Q_UNUSED
+  - BOOST_UNUSED
+
+UseTab: AlignWithSpaces # Never Use tabs for indentation
+
+WhitespaceSensitiveMacros: [BOOST_PP_STRINGIZE] # Macros that are sensitive to whitespace
+WrapNamespaceBodyWithEmptyLines: Always # Wrap namespace body with empty lines
