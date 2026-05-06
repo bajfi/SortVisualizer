@@ -257,4 +257,43 @@ struct sort
 						--CURR_IDX;
 				}
 		}
+
+		/**
+		 * @brief Performs one step of the pancake sort algorithm on the given container of rectangles.
+		 * This function is a sorting algorithm that works by repeatedly flipping the unsorted portion
+		 * of the array to move the maximum element to its correct position. It identifies the maximum
+		 * element in the unsorted portion of the array, flips it to the front, and then flips the
+		 * entire unsorted portion to move the maximum element to its correct position. It also updates
+		 * the tracker to highlight the indices of the flipped elements.
+		 * @param rectangles The container of rectangles to be sorted.
+		 * @param tracker The tracker used to highlight the indices of the flipped elements.
+		 * @param sorted A boolean reference that will be set to true if the sorting is complete,
+		 * otherwise it will remain false.
+		 */
+		template <std::ranges::range Container, typename Tracker>
+		static void SortStepPancake(Container& rectangles, Tracker& tracker, bool& sorted)
+		{
+				const size_t N = rectangles.size();
+				static size_t CURR_IDX = N - 1;
+
+				if (CURR_IDX <= 0)
+				{
+						sorted = true;
+						return;
+				}
+
+				auto max_ele =
+					std::max_element(std::begin(rectangles), std::begin(rectangles) + CURR_IDX + 1);
+				size_t max_idx = std::distance(std::begin(rectangles), max_ele);
+
+				if (max_idx != CURR_IDX)
+				{
+						tracker.clear();
+						std::reverse(std::begin(rectangles), std::begin(rectangles) + max_idx + 1);
+						std::reverse(std::begin(rectangles), std::begin(rectangles) + CURR_IDX + 1);
+						tracker.insert(max_idx);
+						tracker.insert(CURR_IDX);
+				}
+				--CURR_IDX;
+		}
 };
