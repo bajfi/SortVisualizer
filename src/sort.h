@@ -215,4 +215,46 @@ struct sort
 						}
 				}
 		}
+
+		/**
+		 * @brief Performs one step of the gnome sort algorithm on the given container of rectangles.
+		 * This function is a simple sorting algorithm that works by comparing the current element with
+		 * the previous element and swapping them if they are in the wrong order. If a swap is made, the
+		 * algorithm moves back to the previous element and continues comparing until it finds the
+		 * correct position for the current element. It also updates the tracker to highlight the
+		 * indices of the compared or swapped elements.
+		 * @param rectangles The container of rectangles to be sorted.
+		 * @param tracker The tracker used to highlight the indices of the compared or swapped elements.
+		 * @param sorted A boolean reference that will be set to true if the sorting is complete,
+		 * otherwise it will remain false.
+		 */
+		template <std::ranges::range Container, typename Tracker>
+		static void SortStepGnome(Container& rectangles, Tracker& tracker, bool& sorted)
+		{
+				const size_t N = rectangles.size();
+				static size_t CURR_IDX = 1;
+
+				if (CURR_IDX >= N)
+				{
+						sorted = true;
+						return;
+				}
+
+				if (CURR_IDX <= 0)
+				{
+						++CURR_IDX;
+				}
+				if (rectangles[CURR_IDX] >= rectangles[CURR_IDX - 1])
+				{
+						++CURR_IDX;
+				}
+				else
+				{
+						tracker.clear();
+						std::swap(rectangles[CURR_IDX], rectangles[CURR_IDX - 1]);
+						tracker.insert(CURR_IDX);
+						tracker.insert(CURR_IDX - 1);
+						--CURR_IDX;
+				}
+		}
 };
